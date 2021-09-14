@@ -1,5 +1,5 @@
 # feedback-website
-Source code for the 24th MC anonymous feedback portal. You can find the site at `feedback
+Source code for the 24th MC anonymous feedback portal. You can find the site at [`feedback.nuscomputing.com`](feedback.nuscomputing.com).
 
 > This codebase contains secure Firebase keys. Do NOT transfer control of the repo to anyone without authorization. Do NOT make this repo public, it's only to be kept private.
 

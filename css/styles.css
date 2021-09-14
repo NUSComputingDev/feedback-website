@@ -1,0 +1,153 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: Karla, Avenir Next;
+    display: flex;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+#left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #DEE8EB;
+}
+
+#container {
+    width: 75%;
+    height: auto;
+    /* border: 1px solid black; */
+    margin: 0 auto;
+}
+
+#segment-header {
+    font-size: 55px;
+    font-weight: bold;
+    color: #345CB4;
+}
+
+#segment-msg {
+    font-size: 20px;
+    padding: 15px 0 20px 0;
+    color: #A8B7C3;
+    line-height: 30px;
+}
+
+#email {
+    width: 71%;
+    height: 55px;
+    padding: 0 15px 0 15px;
+    font-weight: bold;
+    font-family: Karla, Avenir Next;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+#feedback-msg {
+    resize: none;
+    width: 71%;
+    height: 100px;
+    padding: 15px 15px 0 15px;
+    font-weight: bold;
+    font-family: Karla, Avenir Next;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+#submit-fb {
+    width: 170px;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    font-family: Karla, Avenir Next;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: #345CB4;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+#submit-fb:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+#emotions {
+    width: 80%;
+}
+
+#question {
+    font-size: 17px;
+    font-weight: bold;
+    color: #113836;
+    margin-bottom: 10px;
+}
+
+#faces {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#faces p i {
+    width: auto;
+    height: auto;
+    padding: 7px;
+    font-size: 30px;
+}
+
+#faces p i:hover {
+    border-radius: 7px;
+    background-color: #DCE1EE;
+    color: #1DD1A1;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+#right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("../assets/feedback.png");   
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}

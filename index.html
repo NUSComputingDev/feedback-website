@@ -6,8 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Computing Club Feedback</title>
 
-        <script src="js/app.js"></script>
-
         <link rel="preconnect" href="https://fonts.googleapis.com"> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
@@ -22,6 +20,10 @@
                 <p id="segment-header">We'd love to <br> hear from you.</p>
                 <p id="segment-msg">Feel free to tell us about anything on your mind. <br id="line-break"> We're here for you!</p>
 
+                <p style="font-size: 20px; cursor: pointer; color: #113836;"><i style="padding-right: 4px; font-size: 17px;" class="fas fa-info-circle"></i> Or see FAQs</p>
+                <br>
+                <br>
+
                 <div id="emotions">
                     <p id="question">How are we doing so far?</p>
 
@@ -34,9 +36,17 @@
                     </div>
                 </div>
                 <br>
-                <input type="text" placeholder="Email (optional)" id="email">
+                <select id="category">
+                    <option value="Pick a top">Pick a topic</option>
+                    <option value="General Queries">General Queries</option>
+                    <option value="Elections and Recruitment">Elections and Recruitment</option>
+                    <option value="Others">Others</option>
+                    <option value=""></option>
+                </select>
                 <br>
-                <textarea placeholder="Message" id="feedback-msg"></textarea>
+                <textarea placeholder="Hey, ComClub! I want a ..." id="feedback-msg"></textarea>
+                <br>
+                <input type="text" placeholder="Email (optional)" id="email">
                 <br>
                 <button id="submit-fb">SEND MESSAGE</button>
             </div>
@@ -44,4 +54,28 @@
 
         <div id="right"></div>
     </body>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCn9v6eXCTzJw7z_OHfpH4NEOw8mEnU62g",
+          authDomain: "mc-feedback.firebaseapp.com",
+          projectId: "mc-feedback",
+          storageBucket: "mc-feedback.appspot.com",
+          messagingSenderId: "821071166410",
+          appId: "1:821071166410:web:e2d3283e7b87b590eced33"
+        };
+        console.log(firebaseConfig)
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        console.log(app)
+    </script>
+
+    <script src="js/app.js"></script>
 </html>

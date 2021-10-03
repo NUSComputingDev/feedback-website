@@ -57,6 +57,12 @@
                     <br>
                     <br>
                     ~ 24th Management Committee, ComClub
+                    <br>
+                    <p id="socials" style="width: 200px; display: none; flex-direction: row; justify-content: flex-start;" id="socials">
+                        <a href="http://nuscomputing.com"><i style="padding: 0 15px; font-size: 30px; color: #ffbd30;" class="fas fa-globe"></i></a>
+                        <a href="https://www.linkedin.com/company/nus-students-computing-club"><i style="padding: 0 15px; font-size: 30px; color: #e1306c;" class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/nuscomputingclub/"><i style="padding: 0 15px; font-size: 30px; color: #2867b2;" class="fab fa-linkedin-in"></i></a>
+                    </p>
                 </p>
             </div>
         </div>
@@ -157,6 +163,7 @@
         const segHeader = document.getElementById('segment-header')
         const segMsg = document.getElementById('segment-msg')
         const pdpaMsg = document.getElementById('pdpa-msg')
+        const socials = document.getElementById('socials')
 
         function flush() {
             msgBox.style.display = "none"
@@ -170,6 +177,7 @@
 
             tyHeader.style.display = "block"
             tySubheader.style.display = "block"
+            socials.style.display = "flex"
         }
 
         submitBtn.addEventListener('click', () => {

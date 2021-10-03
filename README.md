@@ -38,3 +38,6 @@ If changes on your IDE are not reflected on your browser, change the port to any
 3. Open a browser and visit `localhost:8080/index.html` and you should see the app loaded up. 
 
 > **Note:** If you check the developer panel, it should have the message `"App loaded."` printed to console.
+
+## Credits
+This feedback website was written by [Rishabh Anand](http://rish-16.github.io), the _IT Secretary_ for the 24th Computing Club Management Committee. All rights reserved.

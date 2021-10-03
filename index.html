@@ -18,7 +18,7 @@
         <div id="left">
             <div id="container">
                 <p id="segment-header">We'd love to hear from you.</p>
-                <p id="segment-msg">Feel free to tell us about anything on your mind. <br id="line-break"> We're here for you! Or scroll down for FAQs <i style="padding-left: 4px; font-size: 17px;" class="fas fa-angle-double-down"></i></p>
+                <p id="segment-msg">Feel free to tell us about anything on your mind. <br id="line-break"> We're here for you!</p>
 
                 <div id="emotions">
                     <p id="question">How are we doing so far?</p>
@@ -26,7 +26,7 @@
                     <div id="faces">
                         <p id="sad-face-btn"><i class="far fa-sad-tear"></i></p>
                         <p id="meh-face-btn"><i class="far fa-meh"></i></p>
-                        <p id="meh-face-btn"><i class="far fa-meh-blank"></i></p>
+                        <p id="blank-face-btn"><i class="far fa-meh-blank"></i></p>
                         <p id="smile-face-btn"><i class="far fa-smile"></i></p>
                         <p id="grin-face-btn"><i class="far fa-grin-beam"></i></p>
                     </div>
@@ -34,9 +34,10 @@
                 <br>
                 <select id="category">
                     <option value="Pick a top">Pick a topic</option>
-                    <option value="General Queries">General Queries</option>
-                    <option value="Elections and Recruitment">Elections and Recruitment</option>
-                    <option value="Others">Others</option>
+                    <option value="gen-queries">General Queries</option>
+                    <option value="gen-requests">General Requests</option>
+                    <option value="elections-recruitment">Elections and Recruitment</option>
+                    <option value="others">Others</option>
                     <option value=""></option>
                 </select>
                 <br>
@@ -44,7 +45,20 @@
                 <br>
                 <input type="text" placeholder="Email (optional)" id="email">
                 <br>
+                <p id="pdpa-msg" style="color: #A8B7C3; padding: 5px 0 5px 0;">This form is PDPA compliant.</p>
                 <button id="submit-fb">SEND MESSAGE</button>
+
+                <p id="ty-header">Thank you!</p>
+                <p id="ty-subheader">
+                    Your feedback has been duly noted and <br> 
+                    sent to the respective wings. <br><br> 
+                    If you've given us your email, <br>
+                    we'll definitely reach out if needed!
+
+                    <br>
+                    <br>
+                    ~ 24th Management Committee, ComClub
+                </p>
             </div>
         </div>
 
@@ -54,9 +68,10 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+        import { getDatabase, child, ref, set, push } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-      
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
           apiKey: "AIzaSyCn9v6eXCTzJw7z_OHfpH4NEOw8mEnU62g",
@@ -64,13 +79,115 @@
           projectId: "mc-feedback",
           storageBucket: "mc-feedback.appspot.com",
           messagingSenderId: "821071166410",
+          databaseURL: "https://mc-feedback-default-rtdb.asia-southeast1.firebasedatabase.app/",
           appId: "1:821071166410:web:e2d3283e7b87b590eced33"
         };
-        console.log(firebaseConfig)
-      
+
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        console.log(app)
+
+        function writeUserData(msg, email, category, rating) {
+            const database = getDatabase(app)
+            const newPostKey = push(child(ref(database), 'posts')).key;
+            set(ref(database, "24MC/feedback/" + newPostKey), {
+                msg: msg,
+                category: category,
+                email: email,
+                rating: rating
+            })
+        }
+
+        const ratingContainer = document.getElementById('emotions')
+        const sadFaceBtn = document.getElementById('sad-face-btn')
+        const mehFaceBtn = document.getElementById('meh-face-btn')
+        const blankFaceBtn = document.getElementById('blank-face-btn')
+        const smileFaceBtn = document.getElementById('smile-face-btn')
+        const grinFaceBtn = document.getElementById('grin-face-btn')
+        const faces = [sadFaceBtn, mehFaceBtn, blankFaceBtn, smileFaceBtn, grinFaceBtn]
+
+        var rating = 2
+
+        function selectRating(idx) {
+            for (var i=0, face; face = faces[i]; i++) {
+                face.style.borderRadius = "0px"
+                face.style.backgroundColor = ""
+                face.style.cursor = "default"
+                face.style.color = "none"
+
+                face.children[0].style.color = "black"
+            }
+
+            faces[idx].style.borderRadius = "7px"
+            faces[idx].style.backgroundColor = "#DCE1EE"
+            faces[idx].style.color = "#1DD1A1"
+            faces[idx].style.cursor = "pointer"
+            faces[idx].children[0].style.color = "#1DD1A1"
+        }
+
+        sadFaceBtn.addEventListener('click', () => {
+            selectRating(0)
+            rating = 1
+        })
+
+        mehFaceBtn.addEventListener('click', () => {
+            selectRating(1)
+            rating = 2
+        })
+
+        blankFaceBtn.addEventListener('click', () => {
+            selectRating(2)
+            rating = 3
+        })
+
+        smileFaceBtn.addEventListener('click', () => {
+            selectRating(3)
+            rating = 4
+        })
+
+        grinFaceBtn.addEventListener('click', () => {
+            selectRating(4)
+            rating = 5
+        })
+
+        const submitBtn = document.getElementById('submit-fb')
+        const topicPicker = document.getElementById('category')
+        const msgBox = document.getElementById('feedback-msg')
+        const emailBox = document.getElementById('email')
+        const tyHeader = document.getElementById('ty-header')
+        const tySubheader = document.getElementById('ty-subheader')
+        const segHeader = document.getElementById('segment-header')
+        const segMsg = document.getElementById('segment-msg')
+        const pdpaMsg = document.getElementById('pdpa-msg')
+
+        function flush() {
+            msgBox.style.display = "none"
+            emailBox.style.display = "none"
+            ratingContainer.style.display = "none"
+            topicPicker.style.display = "none"
+            submitBtn.style.display = "none"
+            pdpaMsg.style.display = "none"
+            segHeader.style.display = "none"
+            segMsg.style.display = "none"
+
+            tyHeader.style.display = "block"
+            tySubheader.style.display = "block"
+        }
+
+        submitBtn.addEventListener('click', () => {
+            var msg = msgBox.value
+            var email = emailBox.value == "" ? null : emailBox.value
+            var category = topicPicker.options[topicPicker.selectedIndex].value;
+
+            writeUserData(
+                msg,
+                email,
+                category,
+                rating
+            )
+
+            flush()
+        })
+        
     </script>
 
     <script src="js/app.js"></script>

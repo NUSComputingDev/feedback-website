@@ -33,14 +33,14 @@
                 </div>
                 <br>
                 <select id="category">
-                    <option value="Pick a topic">Pick a topic</option>
+                    <option selected disabled value="">Pick a topic</option>
                     <option value="sugg-fb">Suggestions and Feedback</option>
                     <option value="gen-queries">General Queries</option>
                     <option value="gen-requests">General Requests</option>
                     <option value="acads">Academics</option>
+                    <option value="merch">Merchandise and SOC Store</option>
                     <option value="events">Events</option>
                     <option value="elections-recruitment">Elections and Recruitment</option>
-                    <option value="acads">To the President</option>
                     <option value="others">Others</option>
                 </select>
                 <br>
@@ -101,7 +101,9 @@
                 msg: msg,
                 category: category,
                 email: email,
-                rating: rating
+                rating: rating,
+                status: "active",
+                fid: newPostKey
             })
         }
 
